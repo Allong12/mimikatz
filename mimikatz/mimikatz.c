@@ -44,15 +44,15 @@ int wmain(int argc, wchar_t * argv[])
 	wchar_t input[0xffff];
 #endif
 	mimikatz_begin();
-	for(i = MIMIKATZ_AUTO_COMMAND_START ; (i < argc) && (status != STATUS_PROCESS_IS_TERMINATING) && (status != STATUS_THREAD_IS_TERMINATING) ; i++)
+	for(i = MEMEDOGZ_AUTO_COMMAND_START ; (i < argc) && (status != STATUS_PROCESS_IS_TERMINATING) && (status != STATUS_THREAD_IS_TERMINATING) ; i++)
 	{
-		kprintf(L"\n" MIMIKATZ L"(" MIMIKATZ_AUTO_COMMAND_STRING L") # %s\n", argv[i]);
+		kprintf(L"\n" MEMEDOGZ L"(" MEMEDOGZ_AUTO_COMMAND_STRING L") # %s\n", argv[i]);
 		status = mimikatz_dispatchCommand(argv[i]);
 	}
 #if !defined(_POWERKATZ)
 	while ((status != STATUS_PROCESS_IS_TERMINATING) && (status != STATUS_THREAD_IS_TERMINATING))
 	{
-		kprintf(L"\n" MIMIKATZ L" # "); fflush(stdin);
+		kprintf(L"\n" MEMEDOGZ L" # "); fflush(stdin);
 		if(fgetws(input, ARRAYSIZE(input), stdin) && (len = wcslen(input)) && (input[0] != L'\n'))
 		{
 			if(input[len - 1] == L'\n')
@@ -70,7 +70,7 @@ void mimikatz_begin()
 {
 	kull_m_output_init();
 #if !defined(_POWERKATZ)
-	SetConsoleTitle(MIMIKATZ L" " MIMIKATZ_VERSION L" " MIMIKATZ_ARCH L" (oe.eo)");
+	SetConsoleTitle(MEMEDOGZ L" " MEMEDOGZ_VERSION L" " MEMEDOGZ_ARCH L" (oe.eo)");
 	SetConsoleCtrlHandler(HandlerRoutine, TRUE);
 #endif
 	kprintf(
@@ -127,8 +127,8 @@ NTSTATUS mimikatz_initOrClean(BOOL Init)
 
 	if(Init)
 	{
-		RtlGetNtVersionNumbers(&MIMIKATZ_NT_MAJOR_VERSION, &MIMIKATZ_NT_MINOR_VERSION, &MIMIKATZ_NT_BUILD_NUMBER);
-		MIMIKATZ_NT_BUILD_NUMBER &= 0x00007fff;
+		RtlGetNtVersionNumbers(&MEMEDOGZ_NT_MAJOR_VERSION, &MEMEDOGZ_NT_MINOR_VERSION, &MEMEDOGZ_NT_BUILD_NUMBER);
+		MEMEDOGZ_NT_BUILD_NUMBER &= 0x00007fff;
 		offsetToFunc = FIELD_OFFSET(KUHL_M, pInit);
 		hr = CoInitializeEx(NULL, COINIT_MULTITHREADED);
 		if(FAILED(hr))

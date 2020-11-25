@@ -22,34 +22,34 @@
 //#define SERVICE_INCONTROL
 #define NET_MODULE
 #if defined(_M_ARM64)
-	#define MIMIKATZ_ARCH L"arm64"
+	#define MEMEDOGZ_ARCH L"arm64"
 #elif defined(_M_X64)
-	#define MIMIKATZ_ARCH L"x64"
+	#define MEMEDOGZ_ARCH L"x64"
 #elif defined(_M_IX86)
-	#define MIMIKATZ_ARCH L"x86"
+	#define MEMEDOGZ_ARCH L"x86"
 #endif
 
-#define MIMIKATZ				L"memedogz"
-#define MIMIKATZ_VERSION		L"2.2.0"
-#define MIMIKATZ_CODENAME		L"A La Vie, A L\'Amour"
-#define MIMIKATZ_MAX_WINBUILD	L"19041"
-#define MIMIKATZ_FULL			MIMIKATZ L" " MIMIKATZ_VERSION L" (" MIMIKATZ_ARCH L") #" MIMIKATZ_MAX_WINBUILD L" " TEXT(__DATE__) L" " TEXT(__TIME__)
-#define MIMIKATZ_SECOND			L"\"" MIMIKATZ_CODENAME L"\""
-#define MIMIKATZ_DEFAULT_LOG	MIMIKATZ L".log"
-#define MIMIKATZ_DRIVER			L"mimidrv"
-#define MIMIKATZ_KERBEROS_EXT	L"kirbi"
-#define MIMIKATZ_SERVICE		MIMIKATZ L"svc"
+#define MEMEDOGZ				L"memedogz"
+#define MEMEDOGZ_VERSION		L"2.2.0"
+#define MEMEDOGZ_CODENAME		L"A La Vie, A L\'Amour"
+#define MEMEDOGZ_MAX_WINBUILD	L"19041"
+#define MEMEDOGZ_FULL			MEMEDOGZ L" " MEMEDOGZ_VERSION L" (" MEMEDOGZ_ARCH L") #" MEMEDOGZ_MAX_WINBUILD L" " TEXT(__DATE__) L" " TEXT(__TIME__)
+#define MEMEDOGZ_SECOND			L"\"" MEMEDOGZ_CODENAME L"\""
+#define MEMEDOGZ_DEFAULT_LOG	MEMEDOGZ L".log"
+#define MEMEDOGZ_DRIVER			L"mimidrv"
+#define MEMEDOGZ_KERBEROS_EXT	L"kirbi"
+#define MEMEDOGZ_SERVICE		MEMEDOGZ L"svc"
 
 #if defined(_WINDLL)
-	#define MIMIKATZ_AUTO_COMMAND_START		0
+	#define MEMEDOGZ_AUTO_COMMAND_START		0
 #else
-	#define MIMIKATZ_AUTO_COMMAND_START		1
+	#define MEMEDOGZ_AUTO_COMMAND_START		1
 #endif
 
 #if defined(_POWERKATZ)
-	#define MIMIKATZ_AUTO_COMMAND_STRING	L"powershell"
+	#define MEMEDOGZ_AUTO_COMMAND_STRING	L"powershell"
 #else
-	#define MIMIKATZ_AUTO_COMMAND_STRING	L"commandline"
+	#define MEMEDOGZ_AUTO_COMMAND_STRING	L"commandline"
 #endif
 
 #if !defined(NT_SUCCESS)
@@ -68,7 +68,7 @@
 #define W00T(...) (kprintf(TEXT(__FUNCTION__) L" w00t! ; " __VA_ARGS__))
 #endif
 
-DWORD MIMIKATZ_NT_MAJOR_VERSION, MIMIKATZ_NT_MINOR_VERSION, MIMIKATZ_NT_BUILD_NUMBER;
+DWORD MEMEDOGZ_NT_MAJOR_VERSION, MEMEDOGZ_NT_MINOR_VERSION, MEMEDOGZ_NT_BUILD_NUMBER;
 
 #if !defined(MS_ENH_RSA_AES_PROV_XP)
 #define MS_ENH_RSA_AES_PROV_XP	L"Microsoft Enhanced RSA and AES Cryptographic Provider (Prototype)"

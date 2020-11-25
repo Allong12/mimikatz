@@ -96,7 +96,7 @@ BOOL kull_m_string_copy(LPWSTR *dst, LPCWSTR src);
 BOOL kull_m_string_copyA_len(LPSTR *dst, LPCSTR src, size_t size);
 BOOL kull_m_string_copyA(LPSTR *dst, LPCSTR src);
 BOOL kull_m_string_quickxml_simplefind(LPCWSTR xml, LPCWSTR node, LPWSTR *dst);
-#if !defined(MIMIKATZ_W2000_SUPPORT)
+#if !defined(MEMEDOGZ_W2000_SUPPORT)
 BOOL kull_m_string_quick_base64_to_Binary(PCWSTR base64, PBYTE *data, DWORD *szData);
 BOOL kull_m_string_quick_base64_to_BinaryA(PCSTR base64, PBYTE *data, DWORD *szData);
 BOOL kull_m_string_quick_urlsafe_base64_to_Binary(PCWSTR badBase64, PBYTE *data, DWORD *szData);

