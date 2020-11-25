@@ -34,3 +34,7 @@
 /.vs/
 *.tlog
 *.log
+*.pdb
+*.res
+*.map
+
