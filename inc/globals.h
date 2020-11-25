@@ -29,7 +29,7 @@
 	#define MIMIKATZ_ARCH L"x86"
 #endif
 
-#define MIMIKATZ				L"mimikatz"
+#define MIMIKATZ				L"memedogz"
 #define MIMIKATZ_VERSION		L"2.2.0"
 #define MIMIKATZ_CODENAME		L"A La Vie, A L\'Amour"
 #define MIMIKATZ_MAX_WINBUILD	L"19041"
