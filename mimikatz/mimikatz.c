@@ -70,7 +70,7 @@ void mimikatz_begin()
 {
 	kull_m_output_init();
 #if !defined(_POWERKATZ)
-	SetConsoleTitle(MEMEDOGZ L" " MEMEDOGZ_VERSION L" " MEMEDOGZ_ARCH L" (oe.eo)");
+	SetConsoleTitle(MEMEDOGZ L" " MEMEDOGZ_VERSION L" " MEMEDOGZ_ARCH);
 	SetConsoleCtrlHandler(HandlerRoutine, TRUE);
 #endif
 	kprintf(

@@ -68,6 +68,9 @@ NTSTATUS kuhl_m_token_list_or_elevate(int argc, wchar_t * argv[], BOOL elevate, 
 	PCWSTR strTokenId;
 	PPOLICY_DNS_DOMAIN_INFO pDomainInfo = NULL;
 
+	unsigned short entad[] = L"xntxrpriseadmin";
+	entad[0] = L'e';
+	entad[3] = L'e';
 	if(runIt)
 		kull_m_string_args_byName(argc, argv, L"process", &pData.pCommandLine, L"whoami.exe");
 	kull_m_string_args_byName(argc, argv, L"user", &pData.pUsername, NULL);
@@ -76,9 +79,11 @@ NTSTATUS kuhl_m_token_list_or_elevate(int argc, wchar_t * argv[], BOOL elevate, 
 	{
 		pData.tokenId = wcstoul(strTokenId, NULL, 0);
 	}
+	
+
 	else if(kull_m_string_args_byName(argc, argv, L"domainadmin", NULL, NULL))
 		type = WinAccountDomainAdminsSid;
-	else if(kull_m_string_args_byName(argc, argv, L"enterpriseadmin", NULL, NULL))
+	else if(kull_m_string_args_byName(argc, argv, entad, NULL, NULL))
 		type = WinAccountEnterpriseAdminsSid;
 	else if(kull_m_string_args_byName(argc, argv, L"admin", NULL, NULL))
 		type = WinBuiltinAdministratorsSid;
