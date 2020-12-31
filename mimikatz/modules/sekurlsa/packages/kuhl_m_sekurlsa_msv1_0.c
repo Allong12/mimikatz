@@ -119,11 +119,11 @@ VOID kuhl_m_sekurlsa_msv_enum_cred(IN PKUHL_M_SEKURLSA_CONTEXT cLsass, IN PVOID 
 						}
 						LocalFree(primaryCredentials.Credentials.Buffer);
 					}
-				} else kprintf(L"n.e. (KIWI_MSV1_0_PRIMARY_CREDENTIALS KO)");
+				} else kprintf(L"n.e. (kw_MSV1_0_pri_credz KO)");
 				aLsassMemory.address = primaryCredentials.next;
 			}
 			aLsassMemory.address = credentials.next;
-		} else kprintf(L"n.e. (KIWI_MSV1_0_CREDENTIALS KO)");
+		} else kprintf(L"n.e. (kw_MSV1_0_credz KO)");
 	}
 }
 

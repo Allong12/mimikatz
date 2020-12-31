@@ -10,6 +10,7 @@ DWORD	g_AuthenticationPackageId_Kerberos = 0;
 BOOL	g_isAuthPackageKerberos = FALSE;
 HANDLE	g_hLSA = NULL;
 
+/*
 const KUHL_M_C kuhl_m_c_kerberos[] = {
 	{kuhl_m_kerberos_ptt,		L"ptt",			L"Pass-the-ticket [NT 6]"},
 	{kuhl_m_kerberos_list,		L"list",		L"List ticket(s)"},
@@ -29,7 +30,7 @@ const KUHL_M_C kuhl_m_c_kerberos[] = {
 const KUHL_M kuhl_m_kerberos = {
 	L"kerberos",	L"Kerberos package module",	L"",
 	ARRAYSIZE(kuhl_m_c_kerberos), kuhl_m_c_kerberos, kuhl_m_kerberos_init, kuhl_m_kerberos_clean
-};
+};*/
 
 NTSTATUS kuhl_m_kerberos_init()
 {
@@ -91,7 +92,7 @@ void kuhl_m_kerberos_ptt_file(PCWCHAR filename)
 		if(NT_SUCCESS(status))
 			kprintf(L"OK\n");
 		else
-			PRINT_ERROR(L"LsaCallKerberosPackage %08x\n", status);
+			PRINT_ERROR(L"Lsa_Call_Kerberos_Package %08x\n", status);
 		LocalFree(fileData);
 	}
 	else PRINT_ERROR_AUTO(L"kull_m_file_readData");

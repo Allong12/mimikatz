@@ -5,6 +5,7 @@
 */
 #include "kuhl_m_process.h"
 
+/*
 const KUHL_M_C kuhl_m_c_process[] = {
 	{kuhl_m_process_list,		L"list",		L"List process"},
 	{kuhl_m_process_exports,	L"exports",		L"List exports"},
@@ -20,7 +21,7 @@ const KUHL_M_C kuhl_m_c_process[] = {
 const KUHL_M kuhl_m_process = {
 	L"process", L"Process module", NULL,
 	ARRAYSIZE(kuhl_m_c_process), kuhl_m_c_process, NULL, NULL
-};
+};*/
 
 NTSTATUS kuhl_m_process_list(int argc, wchar_t * argv[])
 {

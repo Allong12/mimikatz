@@ -203,7 +203,7 @@ NTSTATUS kuhl_m_dpapi_masterkey(int argc, wchar_t * argv[])
 						pCredentialEntry = kuhl_m_dpapi_oe_credential_get(convertedSid, NULL);
 					if(pCredentialEntry)
 					{
-						kprintf(L"\n[masterkey] with volatile cache: "); kuhl_m_dpapi_oe_credential_descr(pCredentialEntry);
+						kprintf(L"\n[mkey] with volatile cache: "); kuhl_m_dpapi_oe_credential_descr(pCredentialEntry);
 						if(masterkeys->dwFlags & 4)
 						{
 							if(pCredentialEntry->data.flags & KUHL_M_DPAPI_OE_CREDENTIAL_FLAG_SHA1)
@@ -235,7 +235,7 @@ NTSTATUS kuhl_m_dpapi_masterkey(int argc, wchar_t * argv[])
 
 							if((cbSystem - cbSystemOffset) == 2 * SHA_DIGEST_LENGTH)
 							{
-								kprintf(L"\n[masterkey] with DPAPI_SYSTEM (machine, then user): "); kull_m_string_wprintf_hex(pSystem + cbSystemOffset, 2 * SHA_DIGEST_LENGTH, 0); kprintf(L"\n");
+								kprintf(L"\n[mkey] with DPAPI_SYSTEM (machine, then user): "); kull_m_string_wprintf_hex(pSystem + cbSystemOffset, 2 * SHA_DIGEST_LENGTH, 0); kprintf(L"\n");
 								if(kull_m_dpapi_unprotect_masterkey_with_userHash(masterkeys->MasterKey, pSystem + cbSystemOffset, SHA_DIGEST_LENGTH, convertedSid, isProtected, &output, &cbOutput))
 
 								{
@@ -251,7 +251,7 @@ NTSTATUS kuhl_m_dpapi_masterkey(int argc, wchar_t * argv[])
 							}
 							else
 							{
-								kprintf(L"\n[masterkey] with DPAPI_SYSTEM: "); kull_m_string_wprintf_hex(pSystem + cbSystemOffset, cbSystem - cbSystemOffset, 0); kprintf(L"\n");
+								kprintf(L"\n[mkey] with DPAPI_SYSTEM: "); kull_m_string_wprintf_hex(pSystem + cbSystemOffset, cbSystem - cbSystemOffset, 0); kprintf(L"\n");
 								if(kull_m_dpapi_unprotect_masterkey_with_userHash(masterkeys->MasterKey, pSystem + cbSystemOffset, cbSystem - cbSystemOffset, convertedSid, isProtected, &output, &cbOutput))
 									kuhl_m_dpapi_display_MasterkeyInfosAndFree(statusGuid ? &guid : NULL, output, cbOutput, NULL);
 								else PRINT_ERROR(L"kull_m_dpapi_unprotect_masterkey_with_shaDerivedkey\n");
@@ -263,7 +263,7 @@ NTSTATUS kuhl_m_dpapi_masterkey(int argc, wchar_t * argv[])
 					{
 						if(kull_m_string_args_byName(argc, argv, L"password", &szPassword, NULL))
 						{
-							kprintf(L"\n[masterkey] with password: %s (%s user)\n", szPassword, isProtected ? L"protected" : L"normal");
+							kprintf(L"\n[mkey] with password: %s (%s user)\n", szPassword, isProtected ? L"protected" : L"normal");
 							if(kull_m_dpapi_unprotect_masterkey_with_password(masterkeys->dwFlags, masterkeys->MasterKey, szPassword, convertedSid, isProtected, &output, &cbOutput))
 							{
 								kuhl_m_dpapi_oe_credential_add(convertedSid, masterkeys->CredHist ? &masterkeys->CredHist->guid : NULL, NULL, NULL, NULL, szPassword);
@@ -273,7 +273,7 @@ NTSTATUS kuhl_m_dpapi_masterkey(int argc, wchar_t * argv[])
 						}
 						if(pHash)
 						{
-							kprintf(L"\n[masterkey] with hash: "); kull_m_string_wprintf_hex(pHash, cbHash, 0);
+							kprintf(L"\n[mkey] with hash: "); kull_m_string_wprintf_hex(pHash, cbHash, 0);
 							if(cbHash == LM_NTLM_HASH_LENGTH)
 								kprintf(L" (ntlm type)\n");
 							else if(cbHash == SHA_DIGEST_LENGTH)
@@ -486,7 +486,7 @@ NTSTATUS kuhl_m_dpapi_create(int argc, wchar_t * argv[])
 				}
 				if(isLocal)
 					flags |= 4;
-				kprintf(L"\n[masterkey] with password: %s (%s user)\n", szPassword, isProtected ? L"protected" : L"normal");
+				kprintf(L"\n[mkey] with password: %s (%s user)\n", szPassword, isProtected ? L"protected" : L"normal");
 			}
 			else
 			{
@@ -494,7 +494,7 @@ NTSTATUS kuhl_m_dpapi_create(int argc, wchar_t * argv[])
 				{
 					if(kull_m_string_stringToHexBuffer(szData, &pHash, &cbHash))
 					{
-						kprintf(L"\n[masterkey] with hash: "); kull_m_string_wprintf_hex(pHash, cbHash, 0);
+						kprintf(L"\n[mkey] with hash: "); kull_m_string_wprintf_hex(pHash, cbHash, 0);
 						if(cbHash == LM_NTLM_HASH_LENGTH)
 							kprintf(L" (ntlm type)\n");
 						else if(cbHash == SHA_DIGEST_LENGTH)
