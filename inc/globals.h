@@ -20,7 +20,7 @@
 #include "../modules/kull_m_output.h"
 //#define KERBEROS_TOOLS
 //#define SERVICE_INCONTROL
-#define NET_MODULE
+//#define NET_MODULE
 #if defined(_M_ARM64)
 	#define MEMEDOGZ_ARCH L"arm64"
 #elif defined(_M_X64)
