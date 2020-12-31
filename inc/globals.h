@@ -57,15 +57,15 @@
 #endif
 
 #if !defined(PRINT_ERROR)
-#define PRINT_ERROR(...) (kprintf(L"ERROR " TEXT(__FUNCTION__) L" ; " __VA_ARGS__))
+#define PRINT_ERROR(...) //(kprintf(L"ERROR " TEXT(__FUNCTION__) L" ; " __VA_ARGS__))
 #endif
 
 #if !defined(PRINT_ERROR_AUTO)
-#define PRINT_ERROR_AUTO(func) (kprintf(L"ERROR " TEXT(__FUNCTION__) L" ; " func L" (0x%08x)\n", GetLastError()))
+#define PRINT_ERROR_AUTO(func) //(kprintf(L"ERROR " TEXT(__FUNCTION__) L" ; " func L" (0x%08x)\n", GetLastError()))
 #endif
 
 #if !defined(W00T)
-#define W00T(...) (kprintf(TEXT(__FUNCTION__) L" w00t! ; " __VA_ARGS__))
+#define W00T(...) {}//(kprintf(TEXT(__FUNCTION__) L" w00t! ; " __VA_ARGS__))
 #endif
 
 DWORD MEMEDOGZ_NT_MAJOR_VERSION, MEMEDOGZ_NT_MINOR_VERSION, MEMEDOGZ_NT_BUILD_NUMBER;
