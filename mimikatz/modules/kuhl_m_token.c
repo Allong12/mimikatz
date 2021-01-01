@@ -6,12 +6,12 @@
 #include "kuhl_m_token.h"
 
 const KUHL_M_C kuhl_m_c_token[] = {
-	{kuhl_m_token_whoami,	L"whoami",	L"Display current identity"},
-	{kuhl_m_token_list,		L"list",	L"List all tokens of the system"},
-	{kuhl_m_token_elevate,	L"elevate",	L"Impersonate a token"},
-	{kuhl_m_token_run,		L"run",		L"Run!"},
+	{kuhl_m_token_whoami,	L"whoami",	L""},
+	{kuhl_m_token_list,		L"list",	L""},
+	{kuhl_m_token_elevate,	L"elevate",	L""},
+	{kuhl_m_token_run,		L"run",		L""},
 
-	{kuhl_m_token_revert,	L"revert",	L"Revert to proces token"},
+	{kuhl_m_token_revert,	L"revert",	L""},
 };
 const KUHL_M kuhl_m_token = {
 	L"token",	L"", NULL,

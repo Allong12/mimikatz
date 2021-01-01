@@ -6,20 +6,20 @@
 #include "kuhl_m_privilege.h"
 
 const KUHL_M_C kuhl_m_c_privilege[] = {
-	{kuhl_m_privilege_debug,		L"debug",		L"get debug privz"},
-	{kuhl_m_privilege_driver,		L"driver",		L"get load driver privz"},
-	{kuhl_m_privilege_security,		L"security",	L"get security privz"},
-	{kuhl_m_privilege_tcb,			L"tcb",			L"get tcb privz"},
-	{kuhl_m_privilege_backup,		L"backup",		L"get backup privz"},
-	{kuhl_m_privilege_restore,		L"restore",		L"get restore privz"},
-	{kuhl_m_privilege_sysenv,		L"sysenv",		L"get system environment privz"},
+	{kuhl_m_privilege_debug,		L"debug",		L""},
+	{kuhl_m_privilege_driver,		L"driver",		L""},
+	{kuhl_m_privilege_security,		L"security",	L""},
+	{kuhl_m_privilege_tcb,			L"tcb",			L""},
+	{kuhl_m_privilege_backup,		L"backup",		L""},
+	{kuhl_m_privilege_restore,		L"restore",		L""},
+	{kuhl_m_privilege_sysenv,		L"sysenv",		L""},
 
-	{kuhl_m_privilege_id,			L"id",			L"get a privilege by its id"},
-	{kuhl_m_privilege_name,			L"name",		L"get a privilege by its name"},
+	{kuhl_m_privilege_id,			L"id",			L""},
+	{kuhl_m_privilege_name,			L"name",		L""},
 };
 
 const KUHL_M kuhl_m_privilege = {
-	L"privilege", L"Privilege module", NULL,
+	L"privilege", L"", NULL,
 	ARRAYSIZE(kuhl_m_c_privilege), kuhl_m_c_privilege, NULL, NULL
 };
 
