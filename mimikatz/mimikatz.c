@@ -9,7 +9,7 @@ const KUHL_M * mimikatz_modules[] = {
 	&kuhl_m_standard,
 	//&kuhl_m_crypto,
 	&kuhl_m_sekurlsa,
-	//&kuhl_m_kerberos,
+	&kuhl_m_kerberos,
 	//&kuhl_m_ngc,
 	&kuhl_m_privilege,
 	//&kuhl_m_process,
@@ -19,7 +19,7 @@ const KUHL_M * mimikatz_modules[] = {
 	//&kuhl_m_event,
 	//&kuhl_m_misc,
 	&kuhl_m_token,
-	//&kuhl_m_vault,
+	&kuhl_m_vault,
 	//&kuhl_m_minesweeper,
 #if defined(NET_MODULE)
 	//&kuhl_m_net,

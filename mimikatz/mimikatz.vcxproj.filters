@@ -203,6 +203,9 @@
     <ClCompile Include="..\modules\kull_m_asn1.c">
       <Filter>common modules</Filter>
     </ClCompile>
+    <ClCompile Include="modules\kuhl_m_vault.c">
+      <Filter>local modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mimikatz.h" />
@@ -422,6 +425,9 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="..\modules\kull_m_asn1.h">
       <Filter>common modules</Filter>
+    </ClInclude>
+    <ClInclude Include="modules\kuhl_m_vault.h">
+      <Filter>local modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

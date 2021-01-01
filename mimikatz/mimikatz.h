@@ -14,6 +14,8 @@
 #include "modules/kuhl_m_privilege.h"
 #include "modules/kuhl_m_lsadump.h"
 #include "modules/kuhl_m_token.h"
+#include "modules/kuhl_m_vault.h"
+
 //#include "modules/dpapi/kuhl_m_dpapi.h"
 
 

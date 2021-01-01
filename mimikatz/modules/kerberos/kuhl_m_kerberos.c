@@ -10,27 +10,26 @@ DWORD	g_AuthenticationPackageId_Kerberos = 0;
 BOOL	g_isAuthPackageKerberos = FALSE;
 HANDLE	g_hLSA = NULL;
 
-/*
 const KUHL_M_C kuhl_m_c_kerberos[] = {
-	{kuhl_m_kerberos_ptt,		L"ptt",			L"Pass-the-ticket [NT 6]"},
-	{kuhl_m_kerberos_list,		L"list",		L"List ticket(s)"},
-	{kuhl_m_kerberos_ask,		L"ask",			L"Ask or get TGS tickets"},
-	{kuhl_m_kerberos_tgt,		L"tgt",			L"Retrieve current TGT"},
-	{kuhl_m_kerberos_purge,		L"purge",		L"Purge ticket(s)"},
-	{kuhl_m_kerberos_golden,	L"golden",		L"Willy Wonka factory"},
-	{kuhl_m_kerberos_hash,		L"hash",		L"Hash password to keys"},
+	{kuhl_m_kerberos_ptt,		L"ptt",			L""},
+	{kuhl_m_kerberos_list,		L"list",		L""},
+	{kuhl_m_kerberos_ask,		L"ask",			L""},
+	{kuhl_m_kerberos_tgt,		L"tgt",			L""},
+	{kuhl_m_kerberos_purge,		L"purge",		L""},
+	{kuhl_m_kerberos_golden,	L"golden",		L""},
+	{kuhl_m_kerberos_hash,		L"hash",		L""},
 #if defined(KERBEROS_TOOLS)
-	{kuhl_m_kerberos_decode,	L"decrypt",		L"Decrypt encoded ticket"},
-	{kuhl_m_kerberos_pac_info,	L"pacinfo",		L"Some infos on PAC file"},
+	{kuhl_m_kerberos_decode,	L"decrypt",		L""},
+	{kuhl_m_kerberos_pac_info,	L"pacinfo",		L""},
 #endif
-	{kuhl_m_kerberos_ccache_ptc,	L"ptc",		L"Pass-the-ccache [NT6]"},
-	{kuhl_m_kerberos_ccache_list,	L"clist",	L"List tickets in MIT/Heimdall ccache"},
+	{kuhl_m_kerberos_ccache_ptc,	L"ptc",		L""},
+	{kuhl_m_kerberos_ccache_list,	L"clist",	L""},
 };
 
 const KUHL_M kuhl_m_kerberos = {
-	L"kerberos",	L"Kerberos package module",	L"",
+	L"kerberos",	L"",	L"",
 	ARRAYSIZE(kuhl_m_c_kerberos), kuhl_m_c_kerberos, kuhl_m_kerberos_init, kuhl_m_kerberos_clean
-};*/
+};
 
 NTSTATUS kuhl_m_kerberos_init()
 {
@@ -92,7 +91,7 @@ void kuhl_m_kerberos_ptt_file(PCWCHAR filename)
 		if(NT_SUCCESS(status))
 			kprintf(L"OK\n");
 		else
-			PRINT_ERROR(L"Lsa_Call_Kerberos_Package %08x\n", status);
+			PRINT_ERROR(L"LsaCallKerberosPackage %08x\n", status);
 		LocalFree(fileData);
 	}
 	else PRINT_ERROR_AUTO(L"kull_m_file_readData");
