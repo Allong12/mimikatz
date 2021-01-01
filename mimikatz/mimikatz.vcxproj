@@ -120,6 +120,7 @@
       <CreateHotpatchableImage>false</CreateHotpatchableImage>
       <ErrorReporting>None</ErrorReporting>
       <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat Condition="'$(Configuration)|$(Platform)'=='Release|x64'">None</DebugInformationFormat>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -144,7 +145,6 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ItemGroup>
     <ClCompile Include="..\modules\kull_m_asn1.c" />
-    <ClCompile Include="..\modules\kull_m_cabinet.c" />
     <ClCompile Include="..\modules\kull_m_cred.c" />
     <ClCompile Include="..\modules\kull_m_crypto.c" />
     <ClCompile Include="..\modules\kull_m_crypto_ngc.c" />
@@ -154,13 +154,11 @@
     <ClCompile Include="..\modules\kull_m_handle.c" />
     <ClCompile Include="..\modules\kull_m_kernel.c" />
     <ClCompile Include="..\modules\kull_m_key.c" />
-    <ClCompile Include="..\modules\kull_m_ldap.c" />
     <ClCompile Include="..\modules\kull_m_net.c" />
     <ClCompile Include="..\modules\kull_m_memory.c" />
     <ClCompile Include="..\modules\kull_m_minidump.c" />
     <ClCompile Include="..\modules\kull_m_output.c" />
     <ClCompile Include="..\modules\kull_m_patch.c" />
-    <ClCompile Include="..\modules\kull_m_pipe.c" />
     <ClCompile Include="..\modules\kull_m_process.c" />
     <ClCompile Include="..\modules\kull_m_registry.c" />
     <ClCompile Include="..\modules\kull_m_remotelib.c" />
@@ -178,12 +176,6 @@
     <ClCompile Include="..\modules\rpc\kull_m_rpc_ms-pac.c" />
     <ClCompile Include="..\modules\kull_m_string.c" />
     <ClCompile Include="..\modules\kull_m_token.c" />
-    <ClCompile Include="..\modules\kull_m_xml.c" />
-    <ClCompile Include="..\modules\sqlite3.c">
-      <PreprocessorDefinitions>SQLITE_UNTESTABLE;SQLITE_DISABLE_INTRINSIC;SQLITE_OMIT_LOCALTIME;SQLITE_DQS=0;SQLITE_THREADSAFE=0;SQLITE_DEFAULT_MEMSTATUS=0;SQLITE_DEFAULT_WAL_SYNCHRONOUS=1;SQLITE_LIKE_DOESNT_MATCH_BLOBS;SQLITE_MAX_EXPR_DEPTH=0;SQLITE_OMIT_DECLTYPE;SQLITE_OMIT_DEPRECATED;SQLITE_OMIT_PROGRESS_CALLBACK;SQLITE_OMIT_SHARED_CACHE;SQLITE_USE_ALLOCA;SQLITE_OMIT_OR_OPTIMIZATION;SQLITE_OMIT_LIKE_OPTIMIZATION;SQLITE_OMIT_BETWEEN_OPTIMIZATION;SQLITE_OMIT_TRUNCATE_OPTIMIZATION;SQLITE_OMIT_TCL_VARIABLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <WarningLevel>Level2</WarningLevel>
-    </ClCompile>
     <ClCompile Include="mimikatz.c" />
     <ClCompile Include="modules\crypto\kuhl_m_crypto_extractor.c" />
     <ClCompile Include="modules\crypto\kuhl_m_crypto_patch.c" />
@@ -191,15 +183,8 @@
     <ClCompile Include="modules\crypto\kuhl_m_crypto_sc.c" />
     <ClCompile Include="modules\dpapi\kuhl_m_dpapi.c" />
     <ClCompile Include="modules\dpapi\kuhl_m_dpapi_oe.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_chrome.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_cloudap.c" />
     <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_creds.c" />
     <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_keys.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_lunahsm.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_powershell.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_rdg.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_ssh.c" />
-    <ClCompile Include="modules\dpapi\packages\kuhl_m_dpapi_wlan.c" />
     <ClCompile Include="modules\kerberos\kuhl_m_kerberos.c" />
     <ClCompile Include="modules\kerberos\kuhl_m_kerberos_ccache.c" />
     <ClCompile Include="modules\kerberos\kuhl_m_kerberos_claims.c" />
@@ -230,7 +215,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\modules\kull_m_asn1.h" />
-    <ClInclude Include="..\modules\kull_m_cabinet.h" />
     <ClInclude Include="..\modules\kull_m_cred.h" />
     <ClInclude Include="..\modules\kull_m_crypto.h" />
     <ClInclude Include="..\modules\kull_m_crypto_ngc.h" />
@@ -241,13 +225,11 @@
     <ClInclude Include="..\modules\kull_m_handle.h" />
     <ClInclude Include="..\modules\kull_m_kernel.h" />
     <ClInclude Include="..\modules\kull_m_key.h" />
-    <ClInclude Include="..\modules\kull_m_ldap.h" />
     <ClInclude Include="..\modules\kull_m_net.h" />
     <ClInclude Include="..\modules\kull_m_memory.h" />
     <ClInclude Include="..\modules\kull_m_minidump.h" />
     <ClInclude Include="..\modules\kull_m_output.h" />
     <ClInclude Include="..\modules\kull_m_patch.h" />
-    <ClInclude Include="..\modules\kull_m_pipe.h" />
     <ClInclude Include="..\modules\kull_m_process.h" />
     <ClInclude Include="..\modules\kull_m_registry.h" />
     <ClInclude Include="..\modules\kull_m_registry_structures.h" />
@@ -267,8 +249,6 @@
     <ClInclude Include="..\modules\kull_m_samlib.h" />
     <ClInclude Include="..\modules\kull_m_string.h" />
     <ClInclude Include="..\modules\kull_m_token.h" />
-    <ClInclude Include="..\modules\kull_m_xml.h" />
-    <ClInclude Include="..\modules\sqlite3.h" />
     <ClInclude Include="mimikatz.h" />
     <ClInclude Include="modules\crypto\kuhl_m_crypto_extractor.h" />
     <ClInclude Include="modules\crypto\kuhl_m_crypto_patch.h" />
@@ -276,15 +256,8 @@
     <ClInclude Include="modules\crypto\kuhl_m_crypto_sc.h" />
     <ClInclude Include="modules\dpapi\kuhl_m_dpapi.h" />
     <ClInclude Include="modules\dpapi\kuhl_m_dpapi_oe.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_chrome.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_cloudap.h" />
     <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_creds.h" />
     <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_keys.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_lunahsm.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_powershell.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_rdg.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_ssh.h" />
-    <ClInclude Include="modules\dpapi\packages\kuhl_m_dpapi_wlan.h" />
     <ClInclude Include="modules\kerberos\kuhl_m_kerberos.h" />
     <ClInclude Include="modules\kerberos\kuhl_m_kerberos_ccache.h" />
     <ClInclude Include="modules\kerberos\kuhl_m_kerberos_claims.h" />
@@ -314,11 +287,15 @@
     <ClInclude Include="modules\sekurlsa\packages\kuhl_m_sekurlsa_ssp.h" />
     <ClInclude Include="modules\sekurlsa\packages\kuhl_m_sekurlsa_tspkg.h" />
     <ClInclude Include="modules\sekurlsa\packages\kuhl_m_sekurlsa_wdigest.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup Condition="'$(ConfigurationType)' == 'Application'">
     <ResourceCompile Include="mimikatz.rc" />
   </ItemGroup>
   <ItemGroup Condition="'$(ConfigurationType)' == 'Application'">
     <None Include="mimikatz.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="memedogz.ico" />
   </ItemGroup>
 </Project>

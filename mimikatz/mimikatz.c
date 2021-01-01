@@ -14,7 +14,7 @@ const KUHL_M * mimikatz_modules[] = {
 	&kuhl_m_privilege,
 	//&kuhl_m_process,
 	//&kuhl_m_service,
-	//&kuhl_m_lsadump,
+	&kuhl_m_lsadump,
 	//&kuhl_m_ts,
 	//&kuhl_m_event,
 	//&kuhl_m_misc,
