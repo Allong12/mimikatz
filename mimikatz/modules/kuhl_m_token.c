@@ -14,7 +14,7 @@ const KUHL_M_C kuhl_m_c_token[] = {
 	{kuhl_m_token_revert,	L"revert",	L"Revert to proces token"},
 };
 const KUHL_M kuhl_m_token = {
-	L"token",	L"Token manipulation module", NULL,
+	L"token",	L"", NULL,
 	ARRAYSIZE(kuhl_m_c_token), kuhl_m_c_token, NULL, NULL
 };
 

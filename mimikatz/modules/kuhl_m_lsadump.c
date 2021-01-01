@@ -6,18 +6,18 @@
 #include "kuhl_m_lsadump.h"
 
 const KUHL_M_C kuhl_m_c_lsadump[] = {
-	{kuhl_m_lsadump_sam,		L"sam",			L"Get the SysKey to decrypt SAM entries (from registry or hives)"},
-	{kuhl_m_lsadump_secrets,	L"secrets",		L"Get the SysKey to decrypt SECRETS entries (from registry or hives)"},
-	{kuhl_m_lsadump_cache,		L"cache",		L"Get the SysKey to decrypt NL$KM then MSCache(v2) (from registry or hives)"},
-	{kuhl_m_lsadump_lsa,		L"lsa",			L"Ask LSA Server to retrieve SAM/AD entries (normal, patch on the fly or inject)"},
-	{kuhl_m_lsadump_trust,		L"trust",		L"Ask LSA Server to retrieve Trust Auth Information (normal or patch on the fly)"},
+	{kuhl_m_lsadump_sam,		L"sam",			NULL},
+	{kuhl_m_lsadump_secrets,	L"secrets",		NULL},
+	{kuhl_m_lsadump_cache,		L"cache",		NULL},
+	{kuhl_m_lsadump_lsa,		L"lsa",			NULL},
+	{kuhl_m_lsadump_trust,		L"trust",		NULL},
 	{kuhl_m_lsadump_bkey,		L"backupkeys",	NULL},
 	{kuhl_m_lsadump_rpdata,		L"rpdata",		NULL},
-	{kuhl_m_lsadump_dcsync,		L"dcsync",		L"Ask a DC to synchronize an object"},
-	{kuhl_m_lsadump_dcshadow,	L"dcshadow",	L"They told me I could be anything I wanted, so I became a domain controller"},
-	{kuhl_m_lsadump_setntlm,	L"setntlm",		L"Ask a server to set a new password/ntlm for one user"},
-	{kuhl_m_lsadump_changentlm,	L"changentlm",	L"Ask a server to set a new password/ntlm for one user"},
-	{kuhl_m_lsadump_netsync,	L"netsync",		L"Ask a DC to send current and previous NTLM hash of DC/SRV/WKS"},
+	{kuhl_m_lsadump_dcsync,		L"dcsync",		NULL},
+	{kuhl_m_lsadump_dcshadow,	L"dcshadow",	NULL},
+	{kuhl_m_lsadump_setntlm,	L"setntlm",		NULL},
+	{kuhl_m_lsadump_changentlm,	L"changentlm",	NULL},
+	{kuhl_m_lsadump_netsync,	L"netsync",		NULL},
 	{kuhl_m_lsadump_packages,	L"packages",	NULL},
 	{kuhl_m_lsadump_mbc,		L"mbc",			NULL},
 	{kuhl_m_lsadump_zerologon,	L"zerologon",	NULL},
@@ -25,7 +25,7 @@ const KUHL_M_C kuhl_m_c_lsadump[] = {
 };
 
 const KUHL_M kuhl_m_lsadump = {
-	L"lsadump", L"LsaDump module", NULL,
+	L"lsadump", L"", NULL,
 	ARRAYSIZE(kuhl_m_c_lsadump), kuhl_m_c_lsadump, NULL, NULL
 };
 

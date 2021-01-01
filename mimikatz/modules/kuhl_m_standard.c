@@ -21,15 +21,10 @@ const KUHL_M_C kuhl_m_c_standard[] = {
 	//{kuhl_m_standard_hostname,	L"hostname",	L"Displays system local hostname"},
 };
 const KUHL_M kuhl_m_standard = {
-	L"standard",	L"Standard module",	L"Basic commands (does not require module name)",
+	L"standard",	L"",	L"",
 	ARRAYSIZE(kuhl_m_c_standard), kuhl_m_c_standard, NULL, NULL
 };
-/*
-NTSTATUS kuhl_m_standard_test(int argc, wchar_t * argv[])
-{
-	return STATUS_SUCCESS;
-}
-*/
+
 NTSTATUS kuhl_m_standard_exit(int argc, wchar_t * argv[])
 {
 	kprintf(L"Bye!\n");
@@ -49,18 +44,6 @@ NTSTATUS kuhl_m_standard_cls(int argc, wchar_t * argv[])
 	return STATUS_SUCCESS;
 }
 
-NTSTATUS kuhl_m_standard_answer(int argc, wchar_t * argv[])
-{
-	kprintf(L"42.\n");
-	return STATUS_SUCCESS;
-}
-
-NTSTATUS kuhl_m_standard_coffee(int argc, wchar_t * argv[])
-{
-	kprintf(L"\n    ( (\n     ) )\n  .______.\n  |      |]\n  \\      /\n   `----'\n");
-	return STATUS_SUCCESS;
-}
-
 NTSTATUS kuhl_m_standard_tallespresso(int argc, wchar_t * argv[])
 {
 	kprintf(L"\n    ( (\n"
@@ -75,7 +58,7 @@ NTSTATUS kuhl_m_standard_tallespresso(int argc, wchar_t * argv[])
 			L"   `----'\n");
 	return STATUS_SUCCESS;
 }
-
+/*
 
 NTSTATUS kuhl_m_standard_sleep(int argc, wchar_t * argv[])
 {
@@ -126,7 +109,7 @@ NTSTATUS kuhl_m_standard_version(int argc, wchar_t * argv[])
 	NTSTATUS status;
 	HMODULE hModule;
 	PNTQUERYSYSTEMINFORMATIONEX pNtQuerySystemInformationEx;
-	SYSTEM_ISOLATED_USER_MODE_INFORMATION iumi = {TRUE, FALSE /* 0 */};
+	SYSTEM_ISOLATED_USER_MODE_INFORMATION iumi = {TRUE, FALSE };
 	#else
 	;
 	if(IsWow64Process(GetCurrentProcess(), &isWow64))
@@ -285,3 +268,5 @@ NTSTATUS kuhl_m_standard_hostname(int argc, wchar_t * argv[])
 	kprintf(L"\n");
 	return STATUS_SUCCESS;
 }
+
+*/

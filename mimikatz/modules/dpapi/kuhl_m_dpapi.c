@@ -4,7 +4,7 @@
 	Licence : https://creativecommons.org/licenses/by/4.0/
 */
 #include "kuhl_m_dpapi.h"
-
+/*
 const KUHL_M_C kuhl_m_c_dpapi[] = {
 	{kuhl_m_dpapi_blob,			L"blob",		L"Describe a DPAPI blob, unprotect it with API or Masterkey"},
 	{kuhl_m_dpapi_protect,		L"protect",		L"Protect a data via a DPAPI call"},
@@ -32,7 +32,7 @@ const KUHL_M kuhl_m_dpapi = {
 	L"dpapi",	L"DPAPI Module (by API or RAW access)", L"Data Protection application programming interface",
 	ARRAYSIZE(kuhl_m_c_dpapi), kuhl_m_c_dpapi, NULL, kuhl_m_dpapi_oe_clean
 };
-
+*/
 NTSTATUS kuhl_m_dpapi_blob(int argc, wchar_t * argv[])
 {
 	DATA_BLOB dataIn = {0, NULL}, dataOut;

@@ -31,7 +31,9 @@ const KUHL_M kuhl_m_crypto = {
 	L"crypto", L"Crypto Module", NULL,
 	ARRAYSIZE(kuhl_m_c_crypto), kuhl_m_c_crypto, kuhl_m_crypto_init, kuhl_m_crypto_clean
 };
-*/
+
+
+
 NTSTATUS kuhl_m_crypto_init()
 {
 	NTSTATUS status = STATUS_NOT_FOUND;
@@ -125,7 +127,7 @@ NTSTATUS kuhl_m_crypto_l_stores(int argc, wchar_t * argv[])
 {
 	DWORD dwSystemStore, nbStore = 0;
 	PCWCHAR szSystemStore;
-	kull_m_string_args_byName(argc, argv, L"systemstore", &szSystemStore, L"CURRENT_USER"/*kuhl_m_crypto_system_stores[0].name*/);
+	kull_m_string_args_byName(argc, argv, L"systemstore", &szSystemStore, L"CURRENT_USER");
 	dwSystemStore = kull_m_crypto_system_store_to_dword(szSystemStore);
 	kprintf(L"Asking for System Store \'%s\' (0x%08x)\n", szSystemStore, dwSystemStore);
 
@@ -134,7 +136,7 @@ NTSTATUS kuhl_m_crypto_l_stores(int argc, wchar_t * argv[])
 
 	return STATUS_SUCCESS;
 }
-
+*/
 BOOL WINAPI kuhl_m_crypto_l_stores_enumCallback_print(const void *pvSystemStore, DWORD dwFlags, PCERT_SYSTEM_STORE_INFO pStoreInfo, void *pvReserved, void *pvArg)
 {
 	kprintf(L"%2u. %s\n", (*((DWORD *) pvArg))++, (wchar_t *) pvSystemStore);
@@ -189,7 +191,7 @@ void kuhl_m_crypto_certificate_descr(PCCERT_CONTEXT pCertContext)
 	}
 	else PRINT_ERROR_AUTO(L"CertGetCertificateContextProperty(SHA1)");
 }
-
+/*
 const DWORD nameSrc[] = {CERT_NAME_FRIENDLY_DISPLAY_TYPE, CERT_NAME_DNS_TYPE, CERT_NAME_EMAIL_TYPE, CERT_NAME_UPN_TYPE, CERT_NAME_URL_TYPE};
 NTSTATUS kuhl_m_crypto_l_certificates(int argc, wchar_t * argv[])
 {
@@ -210,7 +212,7 @@ NTSTATUS kuhl_m_crypto_l_certificates(int argc, wchar_t * argv[])
 		flags |= CRYPT_ACQUIRE_SILENT_FLAG;
 	noKey = kull_m_string_args_byName(argc, argv, L"nokey", NULL, NULL);
 
-	kull_m_string_args_byName(argc, argv, L"systemstore", &szSystemStore, L"CURRENT_USER"/*kuhl_m_crypto_system_stores[0].name*/);
+	kull_m_string_args_byName(argc, argv, L"systemstore", &szSystemStore, L"CURRENT_USER");
 	dwSystemStore = kull_m_crypto_system_store_to_dword(szSystemStore);
 	kull_m_string_args_byName(argc, argv, L"store", &szStore, L"My");
 
@@ -306,6 +308,7 @@ NTSTATUS kuhl_m_crypto_l_certificates(int argc, wchar_t * argv[])
 
 	return STATUS_SUCCESS;
 }
+*/
 
 void kuhl_m_crypto_l_keys_capi(LPCWSTR szContainer, LPCWSTR szProvider, DWORD dwProvType, DWORD dwFlags, BOOL export, LPCWSTR szStore)
 {
@@ -415,7 +418,7 @@ void kuhl_m_crypto_l_keys_cng(LPCWSTR szContainer, LPCWSTR szProvider, DWORD dwF
 	}
 	__except(GetExceptionCode() == ERROR_DLL_NOT_FOUND){}
 }
-
+/*
 NTSTATUS kuhl_m_crypto_l_keys(int argc, wchar_t * argv[])
 {
 	PCWCHAR szProvider, pProvider, szProviderType, szStore, szCngProvider;
@@ -455,7 +458,7 @@ NTSTATUS kuhl_m_crypto_l_keys(int argc, wchar_t * argv[])
 	kuhl_m_crypto_l_keys_cng(NULL, szCngProvider, dwFlags, export, szStore);
 	return STATUS_SUCCESS;
 }
-
+*/
 void kuhl_m_crypto_printKeyInfos(NCRYPT_KEY_HANDLE hCNGKey, HCRYPTKEY hCAPIKey, OPTIONAL HCRYPTPROV hCAPIProv)
 {
 	DWORD myDWORD, dwSizeNeeded;
@@ -774,12 +777,11 @@ wchar_t * kuhl_m_crypto_generateFileName(const wchar_t * term0, const wchar_t * 
 	}
 	return buffer;
 }
-
+/*
 NTSTATUS kuhl_m_crypto_hash(int argc, wchar_t * argv[])
 {
 	PCWCHAR szCount, szPassword = NULL, szUsername = NULL;
-	UNICODE_STRING uPassword, uUsername;/*, uTmp;
-	ANSI_STRING aTmp;*/
+	UNICODE_STRING uPassword, uUsername;
 	OEM_STRING oTmp;
 	DWORD count = 10240;
 	BYTE hash[LM_NTLM_HASH_LENGTH], dcc[LM_NTLM_HASH_LENGTH], md5[MD5_DIGEST_LENGTH], sha1[SHA_DIGEST_LENGTH], sha2[32];
@@ -807,18 +809,6 @@ NTSTATUS kuhl_m_crypto_hash(int argc, wchar_t * argv[])
 		}
 	}
 
-	//if(NT_SUCCESS(RtlUpcaseUnicodeString(&uTmp, &uPassword, TRUE)))
-	//{
-	//	if(NT_SUCCESS(RtlUnicodeStringToAnsiString(&aTmp, &uTmp, TRUE)))
-	//	{
-	//		if(NT_SUCCESS(RtlDigestLM(aTmp.Buffer, hash)))
-	//		{
-	//			kprintf(L"LM  : "); kull_m_string_wprintf_hex(hash, LM_NTLM_HASH_LENGTH, 0); kprintf(L"\n");
-	//		}
-	//		RtlFreeAnsiString(&aTmp);
-	//	}
-	//	RtlFreeUnicodeString(&uTmp);
-	//}
 
 	if(NT_SUCCESS(RtlUpcaseUnicodeStringToOemString(&oTmp, &uPassword, TRUE)))
 	{
@@ -838,7 +828,7 @@ NTSTATUS kuhl_m_crypto_hash(int argc, wchar_t * argv[])
 
 	return STATUS_SUCCESS;
 }
-
+*/
 BOOL kuhl_m_crypto_system_data(PBYTE data, DWORD len, PCWCHAR originalName, BOOL isExport)
 {
 	BOOL status = FALSE;
@@ -918,7 +908,7 @@ BOOL CALLBACK kuhl_m_crypto_system_directory(DWORD level, PCWCHAR fullpath, PCWC
 	}
 	return FALSE;
 }
-
+/*
 NTSTATUS kuhl_m_crypto_system(int argc, wchar_t * argv[])
 {
 	BOOL isExport = kull_m_string_args_byName(argc, argv, L"export", NULL, NULL);
@@ -936,7 +926,7 @@ NTSTATUS kuhl_m_crypto_system(int argc, wchar_t * argv[])
 	else PRINT_ERROR(L"Input Microsoft Crypto Certificate file needed (/file:filename|directory)\n");
 	return STATUS_SUCCESS;
 }
-
+*/
 void kuhl_m_crypto_file_rawData(PKUHL_M_CRYPTO_CERT_PROP prop, PCWCHAR inFile, BOOL isExport)
 {
 	PCWCHAR type, file;
@@ -984,7 +974,7 @@ void kuhl_m_crypto_file_rawData(PKUHL_M_CRYPTO_CERT_PROP prop, PCWCHAR inFile, B
 		}
 	}
 }
-
+/*
 NTSTATUS kuhl_m_crypto_c_cert_to_hw(int argc, wchar_t * argv[])
 {
 	LPCWSTR szStore, szName, szPin;
@@ -1150,7 +1140,7 @@ NTSTATUS kuhl_m_crypto_c_cert_to_hw(int argc, wchar_t * argv[])
 
 	return STATUS_SUCCESS;
 }
-
+*/
 BOOL kuhl_m_crypto_FreeHandleCert(HCERTSTORE *hStore, PCCERT_CONTEXT *pCertContext)
 {
 	if(*pCertContext)
@@ -1375,7 +1365,7 @@ BOOL kuhl_m_crypto_keyutil_export_pkcs8_file(NCRYPT_KEY_HANDLE hNCryptKey, LPCWS
 	else PRINT_ERROR(L"NCryptExportKey(init): 0x%08x\n", nStatus);
 	return status;
 }
-
+/*
 NTSTATUS kuhl_m_crypto_keyutil(int argc, wchar_t * argv[])
 {
 	NCRYPT_PROV_HANDLE hProv;
@@ -1470,3 +1460,4 @@ NTSTATUS kuhl_m_crypto_platforminfo(int argc, wchar_t * argv[])
 	}
 	return STATUS_SUCCESS;
 }
+*/

